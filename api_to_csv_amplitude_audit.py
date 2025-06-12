@@ -18,8 +18,8 @@ def json_to_csv(json_filepath, csv_filepath):
 
             # ✅ Explicit column headers based on your screenshot
             headers = [
-                "Object Name", "Object Description", "Event Category", "Tags",
-                "is_active", "Object Owner", "Action",
+                "Object Type", "Object Name", "Object Description", "Event Category", "Tags",
+                "is_active", "Object Owner", 
                 "is_hidden_from_dropdowns", "is_hidden_from_persona_results",
                 "is_hidden_from_pathfinder", "is_hidden_from_timeline"
             ]
@@ -33,13 +33,13 @@ def json_to_csv(json_filepath, csv_filepath):
                     tags_str = str(raw_tags)
 
                 writer.writerow([
+                    "Event",
                     e.get("event_type", ""),
                     e.get("description", ""),
                     (e.get("category") or {}).get("name", ""),
                     tags_str,
                     e.get("is_active", ""),
                     e.get("owner", ""),
-                    e.get("action", ""),
                     e.get("is_hidden_from_dropdowns", False),
                     e.get("is_hidden_from_persona_results", False),
                     e.get("is_hidden_from_pathfinder", False),
