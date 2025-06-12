@@ -18,7 +18,6 @@ def csv_filter(file_name = "FordPass & Lincoln Way [Live]_events_2025-06-09T17_5
         (df["is_active"] == True) if "is_active" in df.columns else False
         ) &
         (df["Event Category"].str.upper() != "ERRONEOUS") &
-        (~df["Event Schema Status"].str.upper().isin(["DELETED", "BLOCKED"])) & 
         (df["Event Category"].str.upper() != "DECOMMISSIONED")
     ].copy()
 
