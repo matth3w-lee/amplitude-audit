@@ -1,6 +1,13 @@
+
 import pandas as pd
 import xlsxwriter
-import csv_amplitude_audit
+from csv_amplitude_audit import csv_filter
+from api_to_csv_amplitude_audit import api_pull, json_to_csv
+
+filename = "events.csv"
+# Update files
+api_pull()
+csv_filter(filename)
 
 # Load data
 filtered = pd.read_csv("filtered_event_list.csv").fillna("")  # blank out NULLs
